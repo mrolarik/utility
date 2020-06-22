@@ -1,5 +1,4 @@
 # example of loading an image with the Keras API
-%matplotlib inline
 from time import time
 from pathlib import Path
 import numpy as np
