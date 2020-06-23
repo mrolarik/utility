@@ -1,4 +1,4 @@
-from DataGenerator import *
+from utils.DataGenerator import *
 from skimage import transform
 
 class MultiOrientTileDataGenerator(DataGenerator):
