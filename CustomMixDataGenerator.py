@@ -1,8 +1,6 @@
 #from DataGenerator import *
 from skimage import transform
 
-from skimage import transform
-
 class MultiOrientTileDataGenerator(DataGenerator):
     def __init__(self, Xs, ys, keras_image_generator=None ,  dim = 4, batch_size=32,
                  n_channels=3, n_classes=1, 
