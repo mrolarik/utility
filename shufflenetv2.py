@@ -1,12 +1,19 @@
 import numpy as np
 from keras.utils import plot_model
-#from keras.applications.imagenet_utils import _obtain_input_shape
-from keras_applications.imagenet_utils import _obtain_input_shape
 from keras.engine.topology import get_source_inputs
 from keras.layers import Input, Conv2D, MaxPool2D, GlobalMaxPooling2D, GlobalAveragePooling2D
 from keras.layers import Activation, Dense
-from keras.models import Model
 import keras.backend as K
+
+import os
+from keras import backend as K
+from keras_applications.imagenet_utils import _obtain_input_shape
+from keras.models import Model
+from keras.engine.topology import get_source_inputs
+from keras.layers import Activation, Add, Concatenate, Conv2D, GlobalMaxPooling2D
+from keras.layers import GlobalAveragePooling2D,Input, Dense
+from keras.layers import MaxPool2D,AveragePooling2D, BatchNormalization, Lambda, DepthwiseConv2D
+
 
 def channel_split(x, name=''):
     # equipartition
