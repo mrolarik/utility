@@ -1,19 +1,14 @@
+import os
 import numpy as np
+import keras.backend as K
+from keras.models import Model
 from keras.utils import plot_model
 from keras.engine.topology import get_source_inputs
-from keras.layers import Input, Conv2D, MaxPool2D, GlobalMaxPooling2D, GlobalAveragePooling2D
+from keras.layers import MaxPool2D, GlobalMaxPooling2D, GlobalAveragePooling2D, AveragePooling2D
 from keras.layers import Activation, Dense
-import keras.backend as K
-
-import os
-from keras import backend as K
+from keras.layers import Input, Dense, Add, Activation, Concatenate, Conv2D
+from keras.layers import BatchNormalization, Lambda, DepthwiseConv2D
 from keras_applications.imagenet_utils import _obtain_input_shape
-from keras.models import Model
-from keras.engine.topology import get_source_inputs
-from keras.layers import Activation, Add, Concatenate, Conv2D, GlobalMaxPooling2D
-from keras.layers import GlobalAveragePooling2D,Input, Dense
-from keras.layers import MaxPool2D,AveragePooling2D, BatchNormalization, Lambda, DepthwiseConv2D
-
 
 def channel_split(x, name=''):
     # equipartition
@@ -30,7 +25,6 @@ def channel_shuffle(x):
     x = K.permute_dimensions(x, (0,1,2,4,3))
     x = K.reshape(x, [-1, height, width, channels])
     return x
-
 
 def shuffle_unit(inputs, out_channels, bottleneck_ratio,strides=2,stage=1,block=1):
     if K.image_data_format() == 'channels_last':
